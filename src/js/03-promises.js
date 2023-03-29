@@ -32,5 +32,5 @@ function createPromise(position, delay) {
         rejeck({ position, delay });
       }
     }, delay);
-  }, delay);
+  });
 }
