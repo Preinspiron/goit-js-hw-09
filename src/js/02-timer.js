@@ -63,10 +63,10 @@ function addLeadingZero({ days, hours, minutes, seconds }) {
 btnStartRef.addEventListener('click', handleBtnClick);
 
 let currentDate = '';
-let inputTimeDate = '';
+// let inputTimeDate = '';
 
-function handleBtnClick() {
-  inputTimeDate = btnStartRef.previousElementSibling.value;
+function handleBtnClick(e) {
+  let inputTimeDate = e.currentTarget.previousElementSibling.value;
 
   const renderInterval = setInterval(() => {
     currentDate = Date.now();

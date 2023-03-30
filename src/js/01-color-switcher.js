@@ -1,16 +1,17 @@
-let timerId;
+let timerId = null;
 const TIMER_DELAY = 1000;
 const refs = {
   btnStart: document.querySelector('[data-start]'),
   btnStop: document.querySelector('[data-stop]'),
 };
-refs.btnStart.addEventListener('click', e => {
+refs.btnStart.addEventListener('click', onBtnClick);
+function onBtnClick(e) {
   timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
   }, TIMER_DELAY);
 
   e.currentTarget.toggleAttribute('disabled');
-});
+}
 
 refs.btnStop.addEventListener('click', () => {
   clearInterval(timerId);
