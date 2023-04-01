@@ -62,15 +62,17 @@ function addLeadingZero({ days, hours, minutes, seconds }) {
 
 btnStartRef.addEventListener('click', handleBtnClick);
 
-let currentDate = '';
-// let inputTimeDate = '';
-
 function handleBtnClick(e) {
   let inputTimeDate = e.currentTarget.previousElementSibling.value;
+  // let currentDate = Date.now();
 
   const renderInterval = setInterval(() => {
-    currentDate = Date.now();
-    const countDownValue = Date.parse(inputTimeDate) - currentDate;
+    if (Date.now() >= Date.parse(inputTimeDate)) {
+      console.log('cleared');
+      return clearInterval(renderInterval);
+    }
+    console.log(Date.now(), Date.parse(inputTimeDate));
+    const countDownValue = Date.parse(inputTimeDate) - Date.now();
     const convertedValau = convertMs(countDownValue);
     const readyForRenderValue = addLeadingZero(convertedValau);
 
